@@ -1,0 +1,50 @@
+const mongoose = require('mongoose');
+const Products = mongoose.model('Products');
+
+module.exports = {
+  getAll:(req,res)=>{
+    Products.find({},(err,data)=>{
+      if(err){
+        res.json({message:'Error',data:err});
+      }else{
+        res.json({message:'Success',data:data});
+      }
+    });
+  },
+  getOne:(req,res)=>{
+    Products.findById({_id:req.params.id},(err,data)=>{
+      if(err){
+        res.json({message:'Error',data:err});
+      }else{
+        res.json({message:'Success',data:data});
+      }
+    });
+  },
+  new:(req,res)=>{
+    Products.create(req.body,(err,data)=>{
+      if(err){
+        res.json({message:'Error',data:err});
+      }else{
+        res.json({message:'Success',data:data});
+      }
+    });
+  },
+  updateOne:(req,res)=>{
+    Products.findByIdAndUpdate({_id:req.params.id},req.body,{runValidators:true},(err,data)=>{
+      if(err){
+        res.json({message:'Error',data:err});
+      }else{
+        res.json({message:'Success',data:data});
+      }
+    });
+  },
+  destroy:(req,res)=>{
+    Products.findByIdAndRemove({_id:req.params.id},(err,data)=>{
+      if(err){
+        res.json({message:'Error',data:err});
+      }else{
+        res.json({message:'Success',data:data});
+      }
+    });
+  }
+};

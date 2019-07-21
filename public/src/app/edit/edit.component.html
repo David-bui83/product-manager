@@ -1,0 +1,25 @@
+<div class="container">
+    <h3>Update product:</h3>
+    <div class="jumbotron">
+        <form (submit)="updateOneProduct(product._id)">
+          <!-- <p> {{ product | json }} </p> -->
+          <div class="form-group">
+          <label for="name">Product:</label>
+            <input type="text" class="form-control" id="name" name="product.name" [(ngModel)]="product.name">
+          </div>
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" class="form-control" id="price" name="product.price" [(ngModel)]="product.price">
+          </div>
+          <div class="form-group">
+            <label for="image">image:</label>
+            <input type="text" class="form-control" id="image" name="product.image" [(ngModel)]="product.image">
+          </div>
+            <h3 class="text-danger">{{errors?.name?.message}}</h3>
+            <h3 class="text-danger">{{errors?.price?.message}}</h3>
+            <h3 class="text-danger">{{errors?.image?.message}}</h3>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <a (click)="destroyOneProduct(product._id)" class="btn btn-primary text-white">Delete</a>
+        </form>
+    </div>
+  </div>

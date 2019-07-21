@@ -1,0 +1,24 @@
+<div class="container">
+    <h3>Add a new product:</h3>
+    <div class="jumbotron">
+        <form (submit)="postOneProduct()">
+          <!-- <p> {{ newProduct | json }} </p> -->
+          <div class="form-group">
+          <label for="name">Product:</label>
+            <input type="text" class="form-control" id="name" name="newProduct.name" [(ngModel)]="newProduct.name">
+          </div>
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" class="form-control" id="price" name="newProduct.price" [(ngModel)]="newProduct.price">
+          </div>
+          <div class="form-group">
+            <label for="image">image:</label>
+            <input type="text" class="form-control" id="image" name="newProduct.image" [(ngModel)]="newProduct.image">
+          </div>
+            <h3 class="text-danger">{{errors?.name.message}}</h3>
+            <h3 class="text-danger">{{errors?.price.message}}</h3>
+            <h3 class="text-danger">{{errors?.image.message}}</h3>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+  </div>
